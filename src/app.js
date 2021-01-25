@@ -1,6 +1,8 @@
 const express = require('express')
 const morgan = require('morgan')
 const path = require('path');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 const app = express()
 // Settings
@@ -14,6 +16,14 @@ app.use('/public', express.static(`${path.join(__dirname, 'public')}`))
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+// app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: process.env.SECRET_SESS,
+  resave: false,
+  saveUninitialized: true,
+  // cookie: { secure: true }
+}))
+app.use(flash())
 
 // Routes
 app.use('/session', require('./routes/index.route'))
