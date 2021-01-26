@@ -36,8 +36,5 @@ app.use(passport.session())
 app.use('/', require('./routes/index.route'))
 app.use('/users', require('./routes/user.router'))
 app.use('/session', require('./routes/exsession.route'))
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
 
 module.exports = app
