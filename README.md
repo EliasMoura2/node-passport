@@ -30,6 +30,10 @@ CRUD para la creacion de usuarios, desarrollada con Node.js, autenticacion con p
    2. [morgan](https://www.npmjs.com/package/morgan)
    3. [dotenv](https://www.npmjs.com/package/dotenv)
    4. [mongoose](https://mongoosejs.com/)
+   5. [bcrypt](https://www.npmjs.com/package/bcrypt)
+   6. [express-session](https://www.npmjs.com/package/express-session)
+   7. [connect-flash](https://www.npmjs.com/package/connect-flash)
+   8. [passport](http://www.passportjs.org/)
 2. Dev Dependecies:
    1. [nodemon](https://nodemon.io/)
     
