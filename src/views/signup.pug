@@ -1,16 +1,15 @@
 extends ./partials/_header
 
 block content
-  - let title = 'Passport.js'
   nav.navbar.navbar-expand-md.navbar-dark.bg-dark
     .container-fluid
-      a.navbar-brand(href='#')= title
+      a.navbar-brand(href='/') Passport.js
       button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarNavDropdown.collapse.navbar-collapse.row.justify-content-between
         ul.navbar-nav.flex-row.flex-wrap.bg-navbar-nav.pt-2.py-md-0
           li.nav-item
-            a.nav-link.active(aria-current='page' href='#') Home
+            a.nav-link.active(aria-current='page' href='/') Home
           li.nav-item.dropdown
             a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
               | Dropdown link
@@ -22,13 +21,26 @@ block content
               li
                 a.dropdown-item(href='#') Something else here
         ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
+          //- li.nav-item
+          //-   a.btn.btn-secondary(href=`users/signup`) Signup
           li.nav-item
-            a.btn.btn-secondary(href=`users/signup`) Signup
-          li.nav-item
-            a.btn.btn-success(href=`users/signin`) SignIn
+            a.btn.btn-success(href=`/users/signin`) SignIn
   .container
-    h1 Hello world!
-    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus tempore necessitatibus deserunt eaque, ut nihil excepturi omnis iusto harum ipsa ex ab molestias iste aliquid quas adipisci. Aspernatur, ipsa quia.
+    .row
+      .col-md-5.offset-md-5
+        .card(style='width: 18rem;')
+          .card-body
+            h5.card-title User Registration
+            form(action=`/users/signup` method='POST')
+              label(for="username" class="form-label") Username:
+              input#id(type='text' name='username' class="form-control")
+              label(for="email" class="form-label") Email:
+              input#id(type='text' name='email' class="form-control")
+              label(for="password" class="form-label") Password:
+              input#id(type='password' name='password' class="form-control")
+              br
+              .d-grid.gap-2
+                input.btn.btn-primary.btn-block(type="submit" value="Save")
 
   // Footer
   footer.footer.bg-black.small.text-center.text-white-50
