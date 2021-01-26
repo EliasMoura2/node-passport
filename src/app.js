@@ -3,8 +3,12 @@ const morgan = require('morgan')
 const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
+const passport = require('passport');
 
+// Initializations
 const app = express()
+require('./config/local-auth');
+
 // Settings
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
@@ -24,6 +28,9 @@ app.use(session({
   // cookie: { secure: true }
 }))
 app.use(flash())
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 // Routes
 app.use('/', require('./routes/index.route'))

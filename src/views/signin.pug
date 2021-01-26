@@ -25,6 +25,10 @@ block content
             a.btn.btn-secondary(href=`/users/signup`) Signup
           //- li.nav-item
           //-   a.btn.btn-success(href=`users/signin`) SignIn
+  .alert.alert-dismissible.alert-success
+    button.close(type='button' data-dismiss='alert') &times;
+    if data.message
+      strong#confir_passHelp.text-successs= data.message 
   .container
     .row
       .col-md-5.offset-md-5
@@ -32,8 +36,8 @@ block content
           .card-body
             h5.card-title User Login
             form(action=`/users/signin` method='POST')
-              label(for="username" class="form-label") Email:
-              input#id(type='text' name='username' class="form-control")
+              label(for="email" class="form-label") Email:
+              input#id(type='text' name='email' class="form-control")
               label(for="password" class="form-label") password:
               input#id(type='password' name='password' class="form-control")
               br

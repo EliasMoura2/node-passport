@@ -38,6 +38,10 @@ block content
               input#id(type='text' name='email' class="form-control")
               label(for="password" class="form-label") Password:
               input#id(type='password' name='password' class="form-control")
+              label(for="confirm_pass" class="form-label") Confirm Password:
+              input#id(type='password' name='confirm_pass' class="form-control")
+              if errors.message
+                small#confir_passHelp.text-danger= errors.message
               br
               .d-grid.gap-2
                 input.btn.btn-primary.btn-block(type="submit" value="Save")

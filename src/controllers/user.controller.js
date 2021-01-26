@@ -1,3 +1,4 @@
+const User = require('../models/User')
 
 module.exports = {
   getAllUsers: (req, res) => {
@@ -8,27 +9,66 @@ module.exports = {
   },
   signUpGet: (req, res) => {
     const data = { title: 'Singup' }
-    res.render('signup', { data })
+    const errors = { message : '' }
+    res.render('signup', { data, errors })
   },
   signUpPost: async (req, res) => {
     // console.log(req.body)
     // res.send(req.body)
     try {
+      if(req.body.password !== req.body.confirm_pass){
+        const data = { title: 'Singup' }
+        const errors = { message: 'Las passwords no coinciden' }
+        // view
+        res.render('signup', { data, errors })
+        return
+      }
       const { username, email, password } = req.body
-      const newUser = {
+      const user = new User({
         username,
         email,
         password
-      }
-      console.log(newUser)
+      })
+      user.password = await user.encryptPassword(user.password);
+      await user.save();
+      // console.log(user)
+      
+      // route
       res.redirect('signin')
     } catch (error) {
       res.status(500).json({ message: error.message })
     }
   },
   signInGet: (req, res) => {
-    const data = { title: 'Log in' }
+    const data = { title: 'Log in', message: 'Usuario creado' }
     res.render('signin', { data })
+  },
+  signInPost: async (req, res) => {
+    try {
+    // search user
+    // console.log(req.body)
+    const user = await User.findOne({ email: req.body.email})
+    // console.log(user)
+    if(!user){
+      // return res.status(400).json({ error: true, message: 'Usuario no encontrado'})
+      return res.status(400).json({ error: true, message: 'datos no valido'})
+    } // don't exist email
+
+    // validate password
+    const password = req.body.password
+    const validPassword = await user.comparePassword(password);
+    // console.log(validPassword)
+    if(!validPassword){
+      // return res.status(400).json({ error: true, message: 'Password no valida'})
+      return res.status(400).json({ auth: false, error: true, message: 'datos no valido'})
+    } else {
+      // const data = { message: req.body.username }
+      res.redirect('/home')
+      // res.render('home', { data })
+    }
+    } catch (error) {
+      res.status(500).json({ message: error.message })
+    }
   },
   updateUserGet: (req, res) => {
 
