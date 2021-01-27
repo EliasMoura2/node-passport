@@ -43,45 +43,46 @@ block content
                 | Add
       // LIST
       .col-md-7
-        table.table.table-bordered.table-hover
-          thead
-            tr
-              th N&deg;
-              th Title
-              th Description
-              th Operations
-          tbody
-            each task, index in tasks
+        .table-responsive
+          table.table
+            thead
               tr
-                td(scope='row')
-                  = index + 1 
-                if !task.status
+                th N&deg;
+                th Title
+                th Description
+                th Operations
+            tbody
+              each task, index in tasks
+                tr
+                  td(scope='row')
+                    = index + 1 
+                  if !task.status
+                    td
+                      = task.title
+                  else
+                    td(style="text-decoration:line-through;")
+                      = task.title
+                  if !task.status
+                    td
+                      = task.description
+                  else
+                    td(style="text-decoration:line-through;")
+                      = task.description
                   td
-                    = task.title
-                else
-                  td(style="text-decoration:line-through;")
-                    = task.title
-                if !task.status
-                  td
-                    = task.description
-                else
-                  td(style="text-decoration:line-through;")
-                    = task.description
-                td
-                  .operations
-                    a(href=`tasks/turn/${task._id}`)
-                      if !task.status
-                        i.far.fa-square
-                      else
-                        i.far.fa-check-square
-                    a(href=`tasks/update/${task._id}`)
-                      i.fas.fa-edit
-                    a(href=`tasks/delete/${task._id}`)
-                      i.fas.fa-trash-alt
-            else
-              tr
-                td(colspan='4')
-                  | There are no tasks
+                    .operations
+                      a(href=`tasks/turn/${task._id}`)
+                        if !task.status
+                          i.far.fa-square
+                        else
+                          i.far.fa-check-square
+                      a(href=`tasks/update/${task._id}`)
+                        i.fas.fa-edit
+                      a(href=`tasks/delete/${task._id}`)
+                        i.fas.fa-trash-alt
+              else
+                tr
+                  td(colspan='4')
+                    | There are no tasks
   // Contact
   //- section.contact-section.bg-black
   //-     .container
