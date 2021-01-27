@@ -39,7 +39,8 @@ module.exports = {
         email,
         password
       })
-      user.password = user.encryptPassword(user.password);
+      console.log(user)
+      user.password = await user.encryptPassword(user.password);
       await user.save();
       // route
       res.redirect('login')
