@@ -1,0 +1,116 @@
+extends ../partials/_header
+
+block content
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
+    .container-fluid
+      a.navbar-brand(href='#') Task
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNavDropdown.collapse.navbar-collapse
+        ul.navbar-nav
+          //
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown link
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+            </li>
+  .container
+    .row
+      //FORM
+      .col-md-5
+        .car(style='width: 22rem;')
+          .card-body
+            form(action='tasks/create' method='POST')
+              .form-group
+                input.form-control(type='text' name='title' id='' placeholder='Insert a Title')
+              .form-group
+                textarea.form-control(name='description' id='' cols='80' placeholder='Insert a Description')
+              button.btn.btn-primary.btn-block(type='submit')
+                | Add
+      // LIST
+      .col-md-7
+        table.table.table-bordered.table-hover
+          thead
+            tr
+              th N&deg;
+              th Title
+              th Description
+              th Operations
+          tbody
+            each task, index in tasks
+              tr
+                td(scope='row')
+                  = index + 1 
+                if !task.status
+                  td
+                    = task.title
+                else
+                  td(style="text-decoration:line-through;")
+                    = task.title
+                if !task.status
+                  td
+                    = task.description
+                else
+                  td(style="text-decoration:line-through;")
+                    = task.description
+                td
+                  .operations
+                    a(href=`tasks/turn/${task._id}`)
+                      if !task.status
+                        i.far.fa-square
+                      else
+                        i.far.fa-check-square
+                    a(href=`tasks/update/${task._id}`)
+                      i.fas.fa-edit
+                    a(href=`tasks/delete/${task._id}`)
+                      i.fas.fa-trash-alt
+            else
+              tr
+                td(colspan='4')
+                  | There are no tasks
+  // Contact
+  //- section.contact-section.bg-black
+  //-     .container
+  //-       .row
+  //-         .col-md-4.mb-3.mb-md-0
+  //-           .card.py-4.h-100
+  //-             .card-body.text-center
+  //-               i.fas.fa-map-marked-alt.text-primary.mb-2
+  //-               h4.text-uppercase.m-0 Address
+  //-               hr.my-4
+  //-               .small.text-black-50 Posadas, Misiones, Argentina
+  //-         .col-md-4.mb-3.mb-md-0
+  //-           .card.py-4.h-100
+  //-             .card-body.text-center
+  //-               i.fas.fa-envelope.text-primary.mb-2
+  //-               h4.text-uppercase.m-0 Email
+  //-               hr.my-4
+  //-               .small.text-black-50
+  //-                 a(href='d.eliasmoura2@gmail.com') d.eliasmoura2@gmail.com
+  //-         .col-md-4.mb-3.mb-md-0
+  //-           .card.py-4.h-100
+  //-             .card-body.text-center
+  //-               i.fas.fa-mobile-alt.text-primary.mb-2
+  //-               h4.text-uppercase.m-0 Phone
+  //-               hr.my-4
+  //-               .small.text-black-50 +54 (376) 4151874
+  // Footer
+  footer.footer.bg-black.small.text-center.text-white-50
+    .social.d-flex.justify-content-center
+      a.mx-2(href='https://www.linkedin.com/in/elias-moura/' target='_black')
+        i.fab.fa-linkedin
+      a.mx-2(href='https://github.com/EliasMoura2' target='_black')
+        i.fab.fa-github
+      a.mx-2(href='https://www.facebook.com/elias.moura.5/' target='_black')
+        i.fab.fa-facebook-f
+      a.mx-2(href='https://www.instagram.com/d.eliasmoura/' target='_black')
+        i.fab.fa-instagram
+      | Copyright © Elias Moura
