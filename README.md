@@ -1,5 +1,5 @@
 # node-passport
-CRUD para la creacion de usuarios, desarrollada con Node.js, autenticacion con passport.js.
+CRUD para la creacion de tareas y usuarios, desarrollada con Node.js, autenticacion con passport.js.
 ## Comenzando 🚀
 1. Clonar el proyecto: 
 ```
@@ -32,7 +32,7 @@ CRUD para la creacion de usuarios, desarrollada con Node.js, autenticacion con p
    - [mongoose](https://mongoosejs.com/)
    - [bcrypt](https://www.npmjs.com/package/bcrypt)
    - [express-session](https://www.npmjs.com/package/express-session)
-   - [connect-flash](https://www.npmjs.com/package/connect-flash)
+ <!-- - [connect-flash](https://www.npmjs.com/package/connect-flash) -->
    - [passport](http://www.passportjs.org/)
 2. Dev Dependecies:
    - [nodemon](https://nodemon.io/)

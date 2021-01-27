@@ -4,13 +4,15 @@ module.exports = {
   allTasks: async (req, res) => {
     try {
       const tasks = await Task.find({})
-      console.log(tasks)
-      const data = { title: 'Tasks'}
+      // console.log(tasks)
+      const data = { title: 'Tasks' }
       res.render('tasks/index', { tasks, data })
     } catch (error) {
-      res.status(500).json({
-        message: error.message
-      })
+      const data = { title: 'Error', message: error.message}
+      res.render('error', { data })
+      // res.status(500).json({
+      //   message: error.message
+      // })
     }
   },
   addTask: async (req, res) => {
@@ -20,9 +22,11 @@ module.exports = {
       await newTask.save()
       res.redirect('/tasks')
     } catch (error) {
-      res.status(500).json({
-        message: error.message
-      })
+      const data = { title: 'Error', message: error.message}
+      res.render('error', { data })
+      // res.status(500).json({
+      //   message: error.message
+      // })
     }
   },
   doneTask: async(req, res) => {
@@ -32,20 +36,24 @@ module.exports = {
       task.save()
       res.redirect('/tasks')
     } catch (error) {
-      res.status(500).json({
-        message: error.message
-      })
+      const data = { title: 'Error', message: error.message}
+      res.render('error', { data })
+      // res.status(500).json({
+      //   message: error.message
+      // })
     }
   },
   getUpdateTask: async (req, res) => {
     try {
       const task = await Task.findById(req.params.id)
       const data = { title: 'Edit task'}
-      res.render('tasks/edit', { task, data })
+      res.render('tasks/edit', { task, data }) 
     } catch (error) {
-      res.status(500).json({
-        message: error.message
-      })
+      const data = { title: 'Error', message: error.message}
+      res.render('error', { data })
+      // res.status(500).json({
+      //   message: error.message
+      // })
     }
   },
   postUpdateTask: async (req, res) => {
@@ -55,9 +63,11 @@ module.exports = {
       await Task.findByIdAndUpdate(req.params.id, update_values)
       res.redirect('/tasks')
     } catch (error) {
-      res.status(500).json({
-        message: error.message
-      })
+      const data = { title: 'Error', message: error.message}
+      res.render('error', { data })
+      // res.status(500).json({
+      //   message: error.message
+      // })
     }
   },
   deleteTask: async (req, res) => {

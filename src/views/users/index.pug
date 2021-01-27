@@ -1,0 +1,112 @@
+extends ../partials/_header
+
+block content
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
+    .container-fluid
+      a.navbar-brand.btn.btn-primary(href='/home')
+        i.fas.fa-chevron-left
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNavDropdown.collapse.navbar-collapse.row.justify-content-between
+        ul.navbar-nav.flex-row.flex-wrap.bg-navbar-nav.pt-2.py-md-0
+          li.nav-item
+            a.navbar-brand.btn.btn-success(href='/users/signup')
+              i.fas.fa-user-plus
+          //- li.nav-item
+          //-   a.nav-link.active(aria-current='page' href='/home') Home
+          //- li.nav-item.dropdown
+          //-   a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+          //-     | Dropdown link
+          //-   ul.dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+          //-     li
+          //-       a.dropdown-item(href='#') Action
+          //-     li
+          //-       a.dropdown-item(href='#') Another action
+          //-     li
+          //-       a.dropdown-item(href='#') Something else here
+        ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
+          //- li.nav-item
+          //-   a.btn.btn-primary(href=`/users`) User
+        ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
+          li.nav-item
+            a.btn.btn-danger(href=`/users/logout`) Exit
+          
+  .container
+    .row
+      //- //FORM
+      //- .col-md-5
+      //-   .car(style='width: 22rem;')
+      //-     .card-body
+      //-       form(action='tasks/create' method='POST')
+      //-         .form-group
+      //-           input.form-control(type='text' name='title' id='' placeholder='Insert a Title')
+      //-         .form-group
+      //-           textarea.form-control(name='description' id='' cols='80' placeholder='Insert a Description')
+      //-         button.btn.btn-primary.btn-block(type='submit')
+      //-           | Add
+      // LIST
+      //.col-md-7
+      table.table.table-bordered.table-hover
+        thead
+          tr
+            th N&deg;
+            th Username
+            th email
+            th Operations
+        tbody
+          each user, index in users
+            tr
+              td(scope='row')
+                = index + 1 
+              td
+                = user.username
+              td
+                = user.email
+              td
+                .operations
+                  a(href=`/users/update/${user._id}`)
+                    i.fas.fa-edit
+                  a(href=`/users/delete/${user._id}`)
+                    i.fas.fa-trash-alt
+          else
+            tr
+              td(colspan='4')
+                | There are no users
+  // Contact
+  //- section.contact-section.bg-black
+  //-     .container
+  //-       .row
+  //-         .col-md-4.mb-3.mb-md-0
+  //-           .card.py-4.h-100
+  //-             .card-body.text-center
+  //-               i.fas.fa-map-marked-alt.text-primary.mb-2
+  //-               h4.text-uppercase.m-0 Address
+  //-               hr.my-4
+  //-               .small.text-black-50 Posadas, Misiones, Argentina
+  //-         .col-md-4.mb-3.mb-md-0
+  //-           .card.py-4.h-100
+  //-             .card-body.text-center
+  //-               i.fas.fa-envelope.text-primary.mb-2
+  //-               h4.text-uppercase.m-0 Email
+  //-               hr.my-4
+  //-               .small.text-black-50
+  //-                 a(href='d.eliasmoura2@gmail.com') d.eliasmoura2@gmail.com
+  //-         .col-md-4.mb-3.mb-md-0
+  //-           .card.py-4.h-100
+  //-             .card-body.text-center
+  //-               i.fas.fa-mobile-alt.text-primary.mb-2
+  //-               h4.text-uppercase.m-0 Phone
+  //-               hr.my-4
+  //-               .small.text-black-50 +54 (376) 4151874
+  // Footer
+  footer.footer.bg-black.small.text-center.text-white-50
+    .social.d-flex.justify-content-center
+      a.mx-2(href='https://www.linkedin.com/in/elias-moura/' target='_black')
+        i.fab.fa-linkedin
+      a.mx-2(href='https://github.com/EliasMoura2' target='_black')
+        i.fab.fa-github
+      a.mx-2(href='https://www.facebook.com/elias.moura.5/' target='_black')
+        i.fab.fa-facebook-f
+      a.mx-2(href='https://www.instagram.com/d.eliasmoura/' target='_black')
+        i.fab.fa-instagram
+      | Copyright © Elias Moura

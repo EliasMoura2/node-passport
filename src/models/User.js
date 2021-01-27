@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose')
 const bcrypt = require('bcrypt');
 
-const saltRound = 10
+// const saltRound = 10
 
 const userSchema = new Schema({
   username: { type: String, required: [true, 'username is required'] },
@@ -13,9 +13,9 @@ const userSchema = new Schema({
 
 
 
-userSchema.methods.encryptPassword = (password) => {
-  // const salt = await bcrypt.genSalt(10)
-  return bcrypt.hashSync(password, saltRound)
+userSchema.methods.encryptPassword = async (password) => {
+  const saltRound = await bcrypt.genSalt(10)
+  return await bcrypt.hash(password, saltRound)
 }
 
 // // funcion que se ejecuta antes de un save (hashea la password)
@@ -26,8 +26,8 @@ userSchema.methods.encryptPassword = (password) => {
 //   next()
 // })
 
-userSchema.methods.validPassword = function (password) {
-  return bcrypt.compareSync(password, this.password)
+userSchema.methods.validPassword = async function (password) {
+  return await bcrypt.compare(password, this.password)
 }
 
 module.exports = model('User', userSchema)

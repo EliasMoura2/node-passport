@@ -3,7 +3,12 @@ extends ./partials/_header
 block content
   nav.navbar.navbar-expand-md.navbar-dark.bg-dark
     .container-fluid
-      a.navbar-brand(href='/') Passport.js
+      a.navbar-brand.btn.btn-primary(href='/users')
+        i.fas.fa-chevron-left
+        //- i.fas.fa-arrow-alt-circle-left
+        //- i.fas.fa-arrow-circle-left
+        //- i.fas.fa-caret-left
+        //- i.fas.fa-hand-point-left
       button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarNavDropdown.collapse.navbar-collapse.row.justify-content-between

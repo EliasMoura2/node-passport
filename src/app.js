@@ -3,14 +3,29 @@ const express = require('express')
 const logger = require('morgan')
 const path = require('path');
 const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
+// const flash = require('connect-flash');
 const passport = require('./config/passport');
 const verify = require('./middleware/loggedIn');
+const { assert } = require('console')
 
+require('./config/database')
 // Initializations
 let store
 // session and cookies
+if(process.env.NODE_ENV === 'development'){
+  // sessiones en memoria
   store = new session.MemoryStore
-
+} else {
+  store = new MongoDBStore({
+    uri: process.env.MONGODB_URI,
+    collection: 'sessions'
+  })
+  store.on('error', function(error){
+    assert.ifError(error)
+    assert.ok(false)
+  })
+}
 
 const app = express()
 app.use(session({
