@@ -9,23 +9,14 @@ block content
         span.navbar-toggler-icon
       #navbarNavDropdown.collapse.navbar-collapse.row.justify-content-between
         ul.navbar-nav.flex-row.flex-wrap.bg-navbar-nav.pt-2.py-md-0
-          li.nav-item
-            a.nav-link.active(aria-current='page' href='#') Home
-          li.nav-item.dropdown
-            a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-              | Dropdown link
-            ul.dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
-              li
-                a.dropdown-item(href='#') Action
-              li
-                a.dropdown-item(href='#') Another action
-              li
-                a.dropdown-item(href='#') Something else here
         ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
           li.nav-item
-            a.btn.btn-danger(href=`users/signin`) Exit
+            a.btn.btn-primary(href=`/tasks`) Tasks
+        ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
+          li.nav-item
+            a.btn.btn-danger(href=`/users/logout`) Exit
   .container
-    h1 Welcome!
+    h1 Home
     //- a(href='#')
     //-   i.far.fa-comment-dots
     //- a(href='#')

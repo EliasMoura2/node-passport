@@ -1,4 +1,6 @@
 const User = require('../models/User')
+const passport = require('../config/passport');
+
 
 module.exports = {
   getAllUsers: (req, res) => {
@@ -13,7 +15,6 @@ module.exports = {
     res.render('signup', { data, errors })
   },
   signUpPost: async (req, res) => {
-
     try {
       if(req.body.password !== req.body.confirm_pass){
         const data = { title: 'Singup' }
@@ -28,37 +29,36 @@ module.exports = {
         email,
         password
       })
-      user.password = await user.encryptPassword(user.password);
+      user.password = user.encryptPassword(user.password);
       await user.save();
       // route
-      res.redirect('signin')
+      res.redirect('login')
     } catch (error) {
       res.status(500).json({ message: error.message })
     }
   },
-  signInGet: (req, res) => {
-    const data = { title: 'Log in', message: 'Usuario creado' }
-    res.render('signin', { data })
+  logInGet: (req, res) => {
+    const data = { title: 'Log in'}
+    // res.render('signin', { errors: {}, user: new User()})
+    res.render('login', { data })
   },
-  signInPost: async (req, res) => {
-    try {
-    // search user
-    const user = await User.findOne({ email: req.body.email})
-    if(!user){
-      return res.status(400).json({ error: true, message: 'datos no valido'})
-    } // don't exist email
-
-    // validate password
-    const password = req.body.password
-    const validPassword = await user.comparePassword(password);
-    if(!validPassword){
-      return res.status(400).json({ auth: false, error: true, message: 'datos no valido'})
-    } else {
-      res.redirect('/home')
-    }
-    } catch (error) {
-      res.status(500).json({ message: error.message })
-    }
+  logInPost: (req, res, next) => {
+    passport.authenticate('local', function(err, user, info){
+      if(err) return next(err)
+      if(!user) {
+        const data = { title: 'Log in'}
+        return res.render('login', {data, info})
+      }
+  
+      req.logIn(user, function(err){
+        if(err) return next(err)
+        return res.redirect('/home')
+      })
+    })(req, res, next) // lo pasamos, evaluamos con req, res ,next
+  },
+  logOut: (req, res) =>{
+    req.logOut()
+    res.redirect('/')
   },
   updateUserGet: (req, res) => {
 

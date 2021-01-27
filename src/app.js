@@ -1,13 +1,27 @@
+require('dotenv').config()
 const express = require('express')
-const morgan = require('morgan')
+const logger = require('morgan')
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const flash = require('connect-flash');
-const passport = require('passport');
+const passport = require('./config/passport');
+const verify = require('./middleware/loggedIn');
 
 // Initializations
+let store
+// session and cookies
+  store = new session.MemoryStore
+
+
 const app = express()
-require('./config/local-auth');
+app.use(session({
+  cookie: { maxAge: 240 * 60 * 60 * 1000},
+  store: store,
+  resave: true,
+  saveUninitialized: true,
+  secret: `${process.env.SECRET_SESS}`,
+  // cookie: { secure: true }
+}))
 
 // Settings
 app.set('views', path.join(__dirname, 'views'))
@@ -17,24 +31,17 @@ app.set('view engine', 'pug')
 app.use('/public', express.static(`${path.join(__dirname, 'public')}`))
 
 // Middleware
-app.use(morgan('dev'))
+app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 // app.set('trust proxy', 1) // trust first proxy
-app.use(session({
-  secret: process.env.SECRET_SESS,
-  resave: false,
-  saveUninitialized: true,
-  // cookie: { secure: true }
-}))
-app.use(flash())
+app.use(cookieParser())
 app.use(passport.initialize())
 app.use(passport.session())
-
 
 // Routes
 app.use('/', require('./routes/index.route'))
 app.use('/users', require('./routes/user.router'))
-app.use('/session', require('./routes/exsession.route'))
+app.use('/tasks', verify.loggedIn, require('./routes/tasks.router'))
 
 module.exports = app
