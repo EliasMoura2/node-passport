@@ -9,9 +9,6 @@ block content
         span.navbar-toggler-icon
       #navbarNavDropdown.collapse.navbar-collapse.row.justify-content-between
         ul.navbar-nav.flex-row.flex-wrap.bg-navbar-nav.pt-2.py-md-0
-          li.nav-item
-            a.navbar-brand.btn.btn-success(href='/users/signup')
-              i.fas.fa-user-plus
           //- li.nav-item
           //-   a.nav-link.active(aria-current='page' href='/home') Home
           //- li.nav-item.dropdown
@@ -27,9 +24,12 @@ block content
         ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
           //- li.nav-item
           //-   a.btn.btn-primary(href=`/users`) User
-        ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
+          //- ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
+          //-   li.nav-item
+          //-     a.btn.btn-danger(href=`/users/logout`) Exit
           li.nav-item
-            a.btn.btn-danger(href=`/users/logout`) Exit
+            a.navbar-brand.btn.btn-success(href='/users/signup')
+              i.fas.fa-user-plus
           
   .container
     .row
