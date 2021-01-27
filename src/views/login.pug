@@ -30,6 +30,7 @@ block content
   //-   if data.message
   //-     strong#confir_passHelp.text-successs= data.message 
   .container
+<<<<<<< HEAD
     .row.mt-4.justify-content-center
       .card(style='width: 18rem;')
         .card-body
@@ -51,6 +52,26 @@ block content
               input.btn.btn-primary.btn-block(type="submit" value="Login")
               .forgot
                 a(href='#') Olvidé mi password
+=======
+    .row
+      .col-md-5.offset-md-5
+        .card(style='width: 18rem;')
+          .card-body
+            if info && info.message 
+              div.alert.alert-danger
+                = info.message
+            h5.card-title User Login
+            form(action=`/users/login` method='POST')
+              label(for="email" class="form-label") Email:
+              input#id(type='text' name='username' class="form-control")
+              label(for="password" class="form-label") password:
+              input#id(type='password' name='password' class="form-control")
+              br
+              .d-grid.gap-2
+                input.btn.btn-primary.btn-block(type="submit" value="Login")
+                .forgot
+                  a(href='#') Olvidé mi password
+>>>>>>> 95e54bbc33c6f327d41bb9ec4d5482c79e72f03d
 
   // Footer
   footer.footer.bg-black.small.text-center.text-white-50

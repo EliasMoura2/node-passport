@@ -24,9 +24,7 @@ module.exports = {
     const errors = { message : '' }
     res.render('signup', { data, errors })
   },
-  signUpPost:  async (req, res) => {
-    // console.log(req.body)
-    // res.send(req.body)
+  signUpPost: async (req, res) => {
     try {
       if(req.body.password !== req.body.confirm_pass){
         const data = { title: 'Singup' }
@@ -43,8 +41,6 @@ module.exports = {
       })
       user.password = user.encryptPassword(user.password);
       await user.save();
-      // console.log(user)
-      
       // route
       res.redirect('login')
     } catch (error) {

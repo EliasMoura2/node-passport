@@ -5,8 +5,11 @@ const path = require('path');
 const createError = require('http-errors')
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+<<<<<<< HEAD
 const MongoDBStore = require('connect-mongodb-session')(session);
 // const flash = require('connect-flash');
+=======
+>>>>>>> 95e54bbc33c6f327d41bb9ec4d5482c79e72f03d
 const passport = require('./config/passport');
 const verify = require('./middleware/loggedIn');
 const { assert } = require('console')
@@ -15,6 +18,7 @@ require('./config/database')
 // Initializations
 let store
 // session and cookies
+<<<<<<< HEAD
 if(process.env.NODE_ENV === 'development'){
   // sessiones en memoria
   store = new session.MemoryStore
@@ -28,10 +32,14 @@ if(process.env.NODE_ENV === 'development'){
     assert.ok(false)
   })
 }
+=======
+  store = new session.MemoryStore
+
+>>>>>>> 95e54bbc33c6f327d41bb9ec4d5482c79e72f03d
 
 const app = express()
 app.use(session({
-  cookie: { maxAge: 240 * 60 * 60 * 1000}, // 240 (10 dias) 60(1 horas) 60(1 min) 1000(1 seg)
+  cookie: { maxAge: 240 * 60 * 60 * 1000},
   store: store,
   resave: true,
   saveUninitialized: true,
@@ -52,7 +60,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 // app.set('trust proxy', 1) // trust first proxy
 app.use(cookieParser())
-// app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -60,10 +67,5 @@ app.use(passport.session())
 app.use('/', require('./routes/index.route'))
 app.use('/users', require('./routes/user.router'))
 app.use('/tasks', verify.loggedIn, require('./routes/tasks.router'))
-// app.use('/session', require('./routes/exsession.route'))
-
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
 
 module.exports = app
