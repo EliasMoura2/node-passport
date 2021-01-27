@@ -25,24 +25,33 @@ block content
             a.btn.btn-secondary(href=`/users/signup`) Signup
           //- li.nav-item
           //-   a.btn.btn-success(href=`users/signin`) SignIn
-  .alert.alert-dismissible.alert-success
-    button.close(type='button' data-dismiss='alert') &times;
-    if data.message
-      strong#confir_passHelp.text-successs= data.message 
+  //- .alert.alert-dismissible.alert-success
+  //-   button.close(type='button' data-dismiss='alert') &times;
+  //-   if data.message
+  //-     strong#confir_passHelp.text-successs= data.message 
   .container
     .row
       .col-md-5.offset-md-5
         .card(style='width: 18rem;')
           .card-body
+            //- if info && data.info 
+            //- div.alert.alert-danger
+            //-   = data.info
+            //- p= data.message
+            if info && info.message 
+              div.alert.alert-danger
+                = info.message
             h5.card-title User Login
-            form(action=`/users/signin` method='POST')
+            form(action=`/users/login` method='POST')
               label(for="email" class="form-label") Email:
-              input#id(type='text' name='email' class="form-control")
+              input#id(type='text' name='username' class="form-control")
               label(for="password" class="form-label") password:
               input#id(type='password' name='password' class="form-control")
               br
               .d-grid.gap-2
                 input.btn.btn-primary.btn-block(type="submit" value="Login")
+                .forgot
+                  a(href='#') Olvidé mi password
 
   // Footer
   footer.footer.bg-black.small.text-center.text-white-50

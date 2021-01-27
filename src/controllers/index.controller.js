@@ -7,6 +7,8 @@ module.exports = {
     // res.render('index')
   },
   Home: (req, res) => {
+    // const user = req.flash('user')[0]
+    // res.render('home', { data })
     const data = { title: 'Home' }
     // console.log(data)
     res.render('home', { data })
