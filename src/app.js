@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const logger = require('morgan')
 const path = require('path');
-const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('./config/passport');
 const verify = require('./middleware/loggedIn');
@@ -35,7 +34,7 @@ app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 // app.set('trust proxy', 1) // trust first proxy
-app.use(cookieParser())
+// app.use(cookieParser())
 app.use(passport.initialize())
 app.use(passport.session())
 
