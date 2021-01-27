@@ -4,7 +4,7 @@ module.exports = {
       next()
     }else{
       console.log('Usuario sin logearse')
-      res.redirect('users/login')
+      res.redirect('/users/login')
     }
     // console.log(req.user)
   }

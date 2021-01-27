@@ -1,0 +1,47 @@
+extends ../partials/_header
+
+block content
+  nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+    .container-fluid
+      a.navbar-brand.btn.btn-primary(href='/users')
+        i.fas.fa-chevron-left
+        //- i.fas.fa-arrow-alt-circle-left
+        //- i.fas.fa-arrow-circle-left
+        //- i.fas.fa-caret-left
+        //- i.fas.fa-hand-point-left
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNavDropdown.collapse.navbar-collapse.row.justify-content-between
+        //- ul.navbar-nav.flex-row.flex-wrap.bg-navbar-nav.pt-2.py-md-0
+        //- ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
+        //-   li.nav-item
+        //-     a.btn.btn-success(href=`/users/login`) Log In
+  .container
+    .row.mt-4.justify-content-center
+      .card(style='width: 18rem;')
+        .card-body
+          h5.card-title Edit User
+          form(action=`/users/update/${user.id}` method='POST')
+            label(for="id" class="form-label") ID:
+            input#id(type='text' name='id' value= user._id disabled='' class="form-control")
+            label(for="username" class="form-label") Username:
+            input#id(type='text' name='username' value= user.username class="form-control")
+            label(for="email" class="form-label") Email:
+            input#id(type='text' name='email' value= user.email class="form-control")
+            //- if errors.message
+            //-   small#confir_passHelp.text-danger= errors.message
+            br
+            .d-grid.gap-2
+              input.btn.btn-primary.btn-block(type="submit" value="Save")
+
+  footer.footer.bg-black.small.text-center.text-white-50
+  .social.d-flex.justify-content-center
+    a.mx-2(href='https://www.linkedin.com/in/elias-moura/' target='_black')
+      i.fab.fa-linkedin
+    a.mx-2(href='https://github.com/EliasMoura2' target='_black')
+      i.fab.fa-github
+    a.mx-2(href='https://www.facebook.com/elias.moura.5/' target='_black')
+      i.fab.fa-facebook-f
+    a.mx-2(href='https://www.instagram.com/d.eliasmoura/' target='_black')
+      i.fab.fa-instagram
+    | Copyright © Elias Moura

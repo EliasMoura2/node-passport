@@ -3,11 +3,12 @@ extends ../partials/_header
 block content
   nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
     .container-fluid
-      a.navbar-brand.btn.btn-danger(href=`/tasks`) Volver
+      a.navbar-brand.btn.btn-primary(href=`/tasks`)
+        i.fas.fa-chevron-left
       button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarNavDropdown.collapse.navbar-collapse
-        ul.navbar-nav
+        ul.navbar-nav.flex-row.flex-wrap.bg-navbar-nav.pt-2.py-md-0
           //
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -22,24 +23,25 @@ block content
             <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
             </li>
+
   .container
-    .row
-      .col-md-5.offset-md-4
-        .card(style='width: 18rem;')
-          .card-body
-            h5.card-title Edit Task
-            form(action=`tasks/update/${task.id}` method='POST')
-              label(for="id" class="form-label") ID:
-              input#id(type='text' name='id' value= task._id disabled='' class="form-control")
-              label(for="color" class="form-label") Title:
-              input#id(type='text' name='title' value= task.title class="form-control")
-              label(for="modelo" class="form-label") Description:
-              input#id(type='text' name='description' value= task.description class="form-control")
-              label(for="lat" class="form-label") Status:
-              input#id(type='text' name='status' value=`${task.status}` disabled='' class="form-control")
-              br
-              .d-grid.gap-2
-                input.btn.btn-primary.btn-block(type="submit" value="Save")
+    .row.mt-4.justify-content-center
+      .card(style='width: 18rem;')
+        .card-body
+          h5.card-title Edit Task
+          form(action=`/tasks/update/${task.id}` method='POST')
+            label(for="id" class="form-label") ID:
+            input#id(type='text' name='id' value= task._id disabled='' class="form-control")
+            label(for="title" class="form-label") Title:
+            input#id(type='text' name='title' value= task.title class="form-control")
+            label(for="modelo" class="form-label") Description:
+            input#id(type='text' name='description' value= task.description class="form-control")
+            label(for="lat" class="form-label") Status:
+            input#id(type='text' name='status' value=`${task.status}` disabled='' class="form-control")
+            br
+            .d-grid.gap-2
+              input.btn.btn-primary.btn-block(type="submit" value="Save")
+
   // Footer
   footer.footer.bg-black.small.text-center.text-white-50
     .social.d-flex.justify-content-center

@@ -2,12 +2,11 @@ require('dotenv').config()
 const express = require('express')
 const logger = require('morgan')
 const path = require('path');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const MongoDBStore = require('connect-mongodb-session')(session);
-const flash = require('connect-flash');
+// const MongoDBStore = require('connect-mongodb-session')(session);
+// const flash = require('connect-flash');
 const passport = require('./config/passport');
-const User = require('./models/User');
 const verify = require('./middleware/loggedIn');
 
 // Initializations
@@ -49,7 +48,7 @@ app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 // app.set('trust proxy', 1) // trust first proxy
-app.use(cookieParser())
+// app.use(cookieParser())
 // app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())

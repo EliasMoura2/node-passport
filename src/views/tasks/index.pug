@@ -3,25 +3,31 @@ extends ../partials/_header
 block content
   nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4
     .container-fluid
-      a.navbar-brand(href='#') Task
+      a.navbar-brand.btn.btn-primary(href='/home')
+        i.fas.fa-chevron-left
       button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
         span.navbar-toggler-icon
-      #navbarNavDropdown.collapse.navbar-collapse
-        ul.navbar-nav
-          //
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            </li>
+      #navbarNavDropdown.collapse.navbar-collapse.row.justify-content-between
+        ul.navbar-nav.flex-row.flex-wrap.bg-navbar-nav.pt-2.py-md-0
+        //-   li.nav-item
+        //-     a.nav-link.active(aria-current='page' href='/home') Home
+        //-   li.nav-item.dropdown
+        //-     a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+        //-       | Dropdown link
+        //-     ul.dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+        //-       li
+        //-         a.dropdown-item(href='#') Action
+        //-       li
+        //-         a.dropdown-item(href='#') Another action
+        //-       li
+        //-         a.dropdown-item(href='#') Something else here
+        //- ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
+        //-   li.nav-item
+        //-     a.btn.btn-primary(href=`/tasks`) Tasks
+        //- ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
+        //-   li.nav-item
+        //-     a.btn.btn-danger(href=`/users/logout`) Exit
+          
   .container
     .row
       //FORM
