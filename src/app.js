@@ -11,29 +11,31 @@ const { assert } = require('console')
 
 require('./config/database')
 // Initializations
-let store
+// let store
 // session and cookies
 // if(process.env.NODE_ENV === 'development'){
 //   // sessiones en memoria
 //   store = new session.MemoryStore
 // } else {
-  store = new MongoDBStore({
+  let store = new MongoDBStore({
     uri: process.env.MONGODB_URI,
     collection: 'sessions'
   })
+
   store.on('error', function(error){
-    assert.ifError(error)
-    assert.ok(false)
+    // assert.ifError(error)
+    // assert.ok(false)
+    console.log(error)
   })
 // }
 
 const app = express()
 app.use(session({
-  cookie: { maxAge: 240 * 60 * 60 * 1000},
+  secret: 'un secreto',
+  cookie: { maxAge: 1000 * 60 * 60 * 24 * 7},
   store: store,
   resave: true,
   saveUninitialized: true,
-  secret: process.env.SECRET_SESS,
   // cookie: { secure: true }
 }))
 
@@ -57,6 +59,9 @@ app.use(passport.session())
 app.use('/', require('./routes/index.route'))
 app.use('/users', require('./routes/user.router'))
 app.use('/tasks', verify.loggedIn, require('./routes/tasks.router'))
+app.use('/test', (req, res) => {
+  res.send(`Hello ${JSON.stringify(req.session)}`)
+})
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
