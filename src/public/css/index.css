@@ -1,9 +1,12 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700&display=swap');
 /* .container{
   margin: 20px;
   border-radius: 5px;
   
 } */
+* {
+  font-family: 'Exo 2', sans-serif;
+}
 
 /* .introduction{
   background-color: black;
@@ -20,21 +23,59 @@
   padding: 0;
 } */
 
+.card-img-top img{
+  width: 350px;
+}
+
 .operations{
   display: flex;
   justify-content: space-around;
 }
 
+.container {
+  display: flex;
+  justify-content: space-around;
+  /* width: 100%; */
+}
+
+.card-header{
+  text-align: center;
+}
+
+.left{
+  /* width: 50%; */
+}
+
+/* .left img {
+  width: 550px;
+  height: 550px;
+} */
+
+.right{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  /* width: 50%; */
+}
+
+
+  /* p {
+  width: 300px;
+  margin: 0px 40px 0px 40px;
+  text-align: center;
+} */
 
 footer {
-  padding: 10px;
+  /* padding: 10px; */
   background-color: #555555;
   text-align: center;
   /* color: whitesmoke; */
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   font-weight: bold;
 }
 

@@ -33,8 +33,9 @@ block content
   .container
     .row.mt-4.justify-content-center
       .card(style='width: 18rem;')
+        .card-header
+          | User Registration
         .card-body
-          h5.card-title User Registration
           form(action=`/users/signup` method='POST')
             label(for="username" class="form-label") Username:
             input#id(type='text' name='username' class="form-control")

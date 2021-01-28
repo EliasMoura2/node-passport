@@ -19,8 +19,8 @@ block content
   .container
     .row.mt-4.justify-content-center
       .card(style='width: 18rem;')
+        .card-header Edit User
         .card-body
-          h5.card-title Edit User
           form(action=`/users/update/${user.id}` method='POST')
             label(for="id" class="form-label") ID:
             input#id(type='text' name='id' value= user._id disabled='' class="form-control")
@@ -35,13 +35,13 @@ block content
               input.btn.btn-primary.btn-block(type="submit" value="Save")
 
   footer.footer.bg-black.small.text-center.text-white-50
-  .social.d-flex.justify-content-center
-    a.mx-2(href='https://www.linkedin.com/in/elias-moura/' target='_black')
-      i.fab.fa-linkedin
-    a.mx-2(href='https://github.com/EliasMoura2' target='_black')
-      i.fab.fa-github
-    a.mx-2(href='https://www.facebook.com/elias.moura.5/' target='_black')
-      i.fab.fa-facebook-f
-    a.mx-2(href='https://www.instagram.com/d.eliasmoura/' target='_black')
-      i.fab.fa-instagram
-    | Copyright © Elias Moura
+    .social.d-flex.justify-content-center
+      a.mx-2(href='https://www.linkedin.com/in/elias-moura/' target='_black')
+        i.fab.fa-linkedin
+      a.mx-2(href='https://github.com/EliasMoura2' target='_black')
+        i.fab.fa-github
+      a.mx-2(href='https://www.facebook.com/elias.moura.5/' target='_black')
+        i.fab.fa-facebook-f
+      a.mx-2(href='https://www.instagram.com/d.eliasmoura/' target='_black')
+        i.fab.fa-instagram
+      | Copyright © Elias Moura

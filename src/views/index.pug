@@ -4,25 +4,31 @@ block content
   - let title = 'Passport.js'
   nav.navbar.navbar-expand-md.navbar-dark.bg-dark
     .container-fluid
-      a.navbar-brand(href='/')= title
+      a.navbar-brand(href='/') Passport.js
       button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
         span.navbar-toggler-icon
-      #navbarNavDropdown.collapse.navbar-collapse.row.justify-content-between
+      #navbarNavDropdown.collapse.navbar-collapse.justify-content-between
         ul.navbar-nav.flex-row.flex-wrap.bg-navbar-nav.pt-2.py-md-0
         ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
-          li.nav-item
+          li.nav-item.ml-1.mr-1
             a.btn.btn-secondary(href=`/users/signup`) Sign Up
-          li.nav-item
+          li.nav-item.ml-1.me-1
             a.btn.btn-success(href=`/users/login`) Log In
-  .container
-    h1 Hello world!
-    //- a(href='#')
-    //-   i.far.fa-comment-dots
-    //- a(href='#')
-    //-   i.fas.fa-mug-hot
-    //- a(href='#')
-    //-   i.fas.fa-hamburger
-    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus tempore necessitatibus deserunt eaque, ut nihil excepturi omnis iusto harum ipsa ex ab molestias iste aliquid quas adipisci. Aspernatur, ipsa quia.
+  .container-fluid
+    .row
+      .left.col-lg-6.col-md-12.col-sm-12
+        .igm-fluid
+          img(src='../public/img/Security-amico (2).svg' alt='img-Security')
+      .right.col-lg-6.col-md-12.col-sm-12
+        p
+          | This is a user authentication app with login, registration and access control using Node.js, Express, Passport, Mongoose, etc.
+          br
+          | to enter you can use the following credentials:
+          br
+          | email: test@test.com
+          br
+          | password: test
+
 
   // Footer
   footer.footer.bg-black.small.text-center.text-white-50

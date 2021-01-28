@@ -27,8 +27,8 @@ block content
   .container
     .row.mt-4.justify-content-center
       .card(style='width: 18rem;')
+        .card-header Edit Task
         .card-body
-          h5.card-title Edit Task
           form(action=`/tasks/update/${task.id}` method='POST')
             label(for="id" class="form-label") ID:
             input#id(type='text' name='id' value= task._id disabled='' class="form-control")
