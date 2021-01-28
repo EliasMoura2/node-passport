@@ -1,5 +1,5 @@
 # node-passport
-CRUD para la creacion de tareas y usuarios, desarrollada con Node.js, autenticacion con passport.js.
+CRUD para la creacion de tareas y usuarios, la aplicacion esta desarrollada con Node.js utiliza la libreria passport.js para la autenticacion de los usuarios.
 ## Comenzando 🚀
 1. Clonar el proyecto: 
 ```
@@ -12,7 +12,6 @@ CRUD para la creacion de tareas y usuarios, desarrollada con Node.js, autenticac
   HOST = http://localhost
   SECRET_SESS = aSecret
   MONGODB_URI = mongodb://localhost/aNameDB
-
 ```
 3. Instalar dependencias:
 ```
