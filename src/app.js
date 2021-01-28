@@ -1,4 +1,4 @@
-require('dotenv').config()
+// require('dotenv').config()
 const express = require('express')
 const logger = require('morgan')
 const path = require('path');
@@ -13,10 +13,10 @@ require('./config/database')
 // Initializations
 let store
 // session and cookies
-if(process.env.NODE_ENV === 'development'){
-  // sessiones en memoria
-  store = new session.MemoryStore
-} else {
+// if(process.env.NODE_ENV === 'development'){
+//   // sessiones en memoria
+//   store = new session.MemoryStore
+// } else {
   store = new MongoDBStore({
     uri: process.env.MONGODB_URI,
     collection: 'sessions'
@@ -25,7 +25,7 @@ if(process.env.NODE_ENV === 'development'){
     assert.ifError(error)
     assert.ok(false)
   })
-}
+// }
 
 const app = express()
 app.use(session({
@@ -33,7 +33,7 @@ app.use(session({
   store: store,
   resave: true,
   saveUninitialized: true,
-  secret: `${process.env.SECRET_SESS}`,
+  secret: process.env.SECRET_SESS,
   // cookie: { secure: true }
 }))
 
@@ -57,5 +57,21 @@ app.use(passport.session())
 app.use('/', require('./routes/index.route'))
 app.use('/users', require('./routes/user.router'))
 app.use('/tasks', verify.loggedIn, require('./routes/tasks.router'))
+
+  // catch 404 and forward to error handler
+  app.use(function(req, res, next) {
+    next(createError(404));
+  });
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
 module.exports = app
