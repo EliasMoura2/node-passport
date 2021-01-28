@@ -9,12 +9,10 @@ CRUD para la creacion de tareas y usuarios, desarrollada con Node.js, autenticac
 ```
   NODE_ENV = development
   PORT = aPort
-
+  HOST = http://localhost
   SECRET_SESS = aSecret
+  MONGODB_URI = mongodb://localhost/aNameDB
 
-  DB_HOST = localhost
-  DB_PORT = 27017
-  DB_NAME = aNameDB
 ```
 3. Instalar dependencias:
 ```
@@ -32,8 +30,13 @@ CRUD para la creacion de tareas y usuarios, desarrollada con Node.js, autenticac
    - [mongoose](https://mongoosejs.com/)
    - [bcrypt](https://www.npmjs.com/package/bcrypt)
    - [express-session](https://www.npmjs.com/package/express-session)
+   - [cookie-parser](https://www.npmjs.com/package/cookie-parser)
+   - [http-errors](https://www.npmjs.com/package/http-errors)
+   - [connect-mongo-session](https://www.npmjs.com/package/connect-mongodb-session)
  <!-- - [connect-flash](https://www.npmjs.com/package/connect-flash) -->
    - [passport](http://www.passportjs.org/)
+   - [passport-local](http://www.passportjs.org/packages/passport-local/)
+   - [pug](https://pugjs.org/api/getting-started.html)
 2. Dev Dependecies:
    - [nodemon](https://nodemon.io/)
     
