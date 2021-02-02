@@ -7,7 +7,7 @@ module.exports = {
     try {
       const users = await User.find({})
       const data = { title: 'Users' }
-      res.render('users', { users, data })
+      res.render('users/index', { users, data })
     } catch (error) {
       const data = { title: 'Error', message: error.message}
       res.render('error', { data })

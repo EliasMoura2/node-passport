@@ -8,6 +8,18 @@
   font-family: 'Exo 2', sans-serif;
 }
 
+body{
+  /* background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); */
+  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+  background-color: #FFFFFF;
+/* background-image: linear-gradient(180deg, #FFFFFF 0%, #6284FF 50%, #FF0000 100%); */
+
+}
+
+table{
+  background-color: whitesmoke;
+}
+
 /* .introduction{
   background-color: black;
   text-align: center;
@@ -42,9 +54,13 @@
   text-align: center;
 }
 
-.left{
-  /* width: 50%; */
-}
+/* .index{
+  display: flex;
+  justify-content: center;
+} */
+/* .left.col-lg-6{
+  
+} */
 
 /* .left img {
   width: 550px;
@@ -60,6 +76,10 @@
   /* width: 50%; */
 }
 
+  .col-md-4{
+    display: flex;
+    justify-content: center;
+  }
 
   /* p {
   width: 300px;
@@ -85,4 +105,12 @@ footer {
 
 .flex-row {
   flex-direction: row!important;
+}
+
+
+@media (max-width: 480px) {
+  .container-fluid {
+    /* background-color: red; */
+    margin-bottom: 40px;
+  }
 }
