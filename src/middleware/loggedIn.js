@@ -7,5 +7,6 @@ module.exports = {
       res.redirect('/users/login')
     }
     // console.log(req.user)
+
   }
 }

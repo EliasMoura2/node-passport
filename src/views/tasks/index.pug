@@ -36,7 +36,7 @@ block content
           .card-header
             | Task
           .card-body
-            form(action='tasks/create' method='POST')
+            form(action='/tasks/create' method='POST')
               .form-group
                 input.form-control(type='text' name='title' id='' placeholder='Insert a Title')
               .form-group
@@ -72,14 +72,14 @@ block content
                       = task.description
                   td
                     .operations
-                      a(href=`tasks/turn/${task._id}`)
+                      a(href=`/tasks/turn/${task._id}`)
                         if !task.status
                           i.far.fa-square
                         else
                           i.far.fa-check-square
-                      a(href=`tasks/update/${task._id}`)
+                      a(href=`/tasks/update/${task._id}`)
                         i.fas.fa-edit
-                      a(href=`tasks/delete/${task._id}`)
+                      a(href=`/tasks/delete/${task._id}`)
                         i.fas.fa-trash-alt
               else
                 tr

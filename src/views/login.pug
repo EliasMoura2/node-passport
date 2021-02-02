@@ -22,7 +22,7 @@ block content
         //-         a.dropdown-item(href='#') Something else here
         ul.navbar-nav.flex-row.flex-wrap.ms-md-auto
           li.nav-item
-            a.btn.btn-warning(href=`/users/signup`) Register
+            a.btn.btn-warning(href=`/auth/signup`) Register
           //- li.nav-item
           //-   a.btn.btn-success(href=`users/signin`) SignIn
   //- .alert.alert-dismissible.alert-success
@@ -39,10 +39,10 @@ block content
           //- div.alert.alert-danger
           //-   = data.info
           //- p= data.message
-          if info && info.message 
-            div.alert.alert-danger
-              = info.message
-          form(action=`/users/login` method='POST')
+          //- if info && info.message 
+          //-   div.alert.alert-danger
+          //-     = info.message
+          form(action=`/auth/login` method='POST')
             label(for="email" class="form-label") Email:
             input#id(type='text' name='username' class="form-control")
             label(for="password" class="form-label") password:
@@ -50,7 +50,7 @@ block content
             br
             .d-grid.gap-2
               input.btn.btn-primary.btn-block(type="submit" value="Login")
-              a.btn.btn-warning.btn-block(href='/users/signup')
+              a.btn.btn-warning.btn-block(href='/auth/signup')
                 | Register
               .forgot
                 a(href='#') Olvidé mi password

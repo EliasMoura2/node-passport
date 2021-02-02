@@ -27,6 +27,8 @@ CRUD para la creacion de tareas y usuarios, la aplicacion esta desarrollada con 
    - [morgan](https://www.npmjs.com/package/morgan)
    - [dotenv](https://www.npmjs.com/package/dotenv)
    - [mongoose](https://mongoosejs.com/)
+   - [mongoose-unique-validator](https://www.npmjs.com/package/mongoose-unique-validator)
+   - [Joi](https://joi.dev/)
    - [bcrypt](https://www.npmjs.com/package/bcrypt)
    - [express-session](https://www.npmjs.com/package/express-session)
    - [cookie-parser](https://www.npmjs.com/package/cookie-parser)
@@ -36,6 +38,7 @@ CRUD para la creacion de tareas y usuarios, la aplicacion esta desarrollada con 
    - [passport](http://www.passportjs.org/)
    - [passport-local](http://www.passportjs.org/packages/passport-local/)
    - [pug](https://pugjs.org/api/getting-started.html)
+   <!-- npx babel-node src/index.js -->
 2. Dev Dependecies:
    - [nodemon](https://nodemon.io/)
     

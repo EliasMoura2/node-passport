@@ -1,6 +1,5 @@
-// require('dotenv').config()
-const express = require('express')
-const logger = require('morgan')
+const express = require('express');
+const logger = require('morgan');
 const path = require('path');
 const createError = require('http-errors');
 const session = require('express-session');
@@ -15,7 +14,7 @@ require('./config/database')
 // let store
 // session and cookies
 // if(process.env.NODE_ENV === 'development'){
-//   // sessiones en memoria
+//   // sessions in memory
 //   store = new session.MemoryStore
 // } else {
   let store = new MongoDBStore({
@@ -57,9 +56,10 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // Routes
-app.use('/', require('./routes/index.route'))
-app.use('/users', require('./routes/user.router'))
-app.use('/tasks', verify.loggedIn, require('./routes/tasks.router'))
+app.use('/', require('./routes/index.routes'))
+app.use('/auth', require('./routes/auth.routes'))
+app.use('/users', require('./routes/user.routes'))
+app.use('/tasks', verify.loggedIn, require('./routes/tasks.routes'))
 app.use('/test', (req, res) => {
   res.send(`Hello ${JSON.stringify(req.session)}`)
 })
