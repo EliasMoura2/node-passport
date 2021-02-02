@@ -35,7 +35,7 @@ module.exports = {
         password
       })
       console.log('User: ', user)
-      // user.password = await user.encryptPassword(user.password);
+      user.password = await user.encryptPassword(user.password);
       const userStored =  await user.save();
       // await user.save()
       console.log('userStored: ', userStored)

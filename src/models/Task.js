@@ -14,7 +14,8 @@ const taskSchema = new Schema({
     default: false
   }
 }, {
-  timestamps: true
+  timestamps: true,
+  versionKey: false
 })
 
-module.exports = model('Tasks', taskSchema)
+module.exports = model('Task', taskSchema)

@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router()
 const taskController = require('../controllers/task.controller')
 
+router.get('/task', taskController.getTaskByUser)
 router.get('/', taskController.allTasks)
 router.post('/create', taskController.addTask)
 router.get('/turn/:id', taskController.doneTask)

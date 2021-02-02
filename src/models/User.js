@@ -20,7 +20,14 @@ const userSchema = new Schema({
     type: String,
     trim: true,
     required: [true, 'password is required']
-  }
+  },
+  tasks: [{
+    ref: "Task",
+    type: Schema.Types.ObjectId
+  }]
+}, {
+  timestamps:true,
+  versionKey: false
 })
 
 userSchema.methods.encryptPassword = async (password) => {

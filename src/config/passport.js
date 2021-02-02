@@ -7,10 +7,15 @@ passport.use(new LocalStrategy({
   emailField: 'username',
   passwordField: 'password'
 }, async function (email, password, done){
-    await User.findOne({email: email}, (err, user) => {
+    await User.findOne({ email: email }, (err, user) => {
       if(err) { return done(err) }
       if(!user) { return done(null, false, { message: 'Email incorrecto' }) }
       if(!user.validPassword(password)) { return done(null, false, { message: 'Password incorrecto' }) }
+      // const user2 = {
+      //   _id: user._id,
+      //   username: user.username,
+      //   email: user.email
+      // }
       return done(null, user)
     })
     // console.log(user)
